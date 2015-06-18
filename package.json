@@ -1,0 +1,9 @@
+{
+  "name": "service-template",
+  "private": "true",
+  "version": "0.2.75",
+  "description": "",
+  "scripts": {},
+  "author": "",
+  "license": "ISC"
+}
