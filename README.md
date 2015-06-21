@@ -6,6 +6,7 @@
 export SERVICE_PORT=50000
 export SERVICE_SSL=0
 export SERVICE_APIKEY=abcde12345
+export SERVICE_VERSION=0.2.75
 ```
 
 ##Deploy configuration
@@ -20,6 +21,7 @@ export SERVICE_TAGS=ecommerce,feature1
 
 ```
 docker build -t service-template .
+docker pull $PUBLISH_SERVICE/service-template:$SERVICE_VERSION
 ```
 
 ##Run locally
@@ -31,8 +33,8 @@ docker run -t -i -p $SERVICE_PORT:$SERVICE_PORT service-template
 ##Publish into private repository
 
 ```
-docker tag service-template $PUBLISH_SERVICE/service-template:0.2.75
-docker push $PUBLISH_SERVICE/service-template:0.2.75
+docker tag service-template $PUBLISH_SERVICE/service-template:$SERVICE_VERSION
+docker push $PUBLISH_SERVICE/service-template:$SERVICE_VERSION
 ```
 
 ##Deploy via Shipyard
@@ -43,11 +45,11 @@ curl -X POST \
 -H 'X-Service-Key: pdE4.JVg43HyxCEMWvsFvu6bdFV7LwA7YPii' \
 http://$DEPLOY_SERVICE/api/containers?pull=true \
 -d '{  
-  "name":"'$PUBLISH_SERVICE'/service-template:0.2.75",
+  "name":"'$PUBLISH_SERVICE'/service-template:'$SERVICE_VERSION'",
   "cpus":0.1,
   "memory":64,
   "environment":{
-    "SERVICE_CHECK_SCRIPT":"curl -s http://$SERVICE_IP:$SERVICE_PORT/manage/os?apikey='$SERVICE_APIKEY'",
+    "SERVICE_CHECK_SCRIPT":"curl -s http://$SERVICE_CONTAINER_IP:$SERVICE_CONTAINER_PORT/manage/os?apikey='$SERVICE_APIKEY'",
     "SERVICE_PORT":"'$SERVICE_PORT'",
     "SERVICE_SSL":"'$SERVICE_SSL'",
     "SERVICE_TAGS":"'$SERVICE_TAGS'",
