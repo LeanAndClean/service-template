@@ -3,18 +3,17 @@
 ##Service configuration
 
 ```
-export SERVICE_PORT=50000
 export SERVICE_SSL=0
 export SERVICE_APIKEY=abcde12345
-export SERVICE_VERSION=0.2.75
 ```
 
 ##Deploy configuration
 
 ```
-export PUBLISH_SERVICE=46.101.191.124:5000
-export DEPLOY_SERVICE=46.101.191.124:8080
-export SERVICE_TAGS=ecommerce,feature1
+export SERVICE_PORT=50000
+export SERVICE_VERSION=0.2.75
+export PUBLISH_SERVICE=<ip>:<port>
+export DEPLOY_SERVICE=<ip>:<port>
 ```
 
 ##Build
