@@ -26,6 +26,6 @@ docker run -t -i -p $SERVICE_PORT:$SERVICE_PORT service-template
 ##Publish into private repository
 
 ```
-docker tag service-template $PUBLISH_SERVICE/service-template:$SERVICE_VERSION
+docker tag service-template:latest $PUBLISH_SERVICE/service-template:$SERVICE_VERSION
 docker push $PUBLISH_SERVICE/service-template:$SERVICE_VERSION
 ```
