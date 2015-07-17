@@ -1,4 +1,4 @@
-#Service Template
+#Subkit Microservice Template
 
 ##Configuration
 
